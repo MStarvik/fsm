@@ -1,7 +1,9 @@
 #!/usr/bin/env python2
+from weakref import proxy
+
 class State(object):
     def __init__(self, state_machine):
-        self.state_machine = state_machine;
+        self.state_machine = proxy(state_machine);
 
         self.signals = dict()
 
@@ -17,10 +19,10 @@ class State(object):
         if self.state_machine:
             self.state_machine.transition(state)
         elif self.debug > 0:
-            print("debug: {} is has no state machine".format(self.__name__))
+            print("debug: {} has no state machine".format(self.__name__))
 
     def signal(self, signal):
         if signal in self.signals:
             self.signals[signal]()
         elif self.debug > 2:
-            print("debug: {} is has no signal named {}".format(self.__name__, signal))
+            print("debug: {} has no signal named {}".format(self.__name__, signal))
