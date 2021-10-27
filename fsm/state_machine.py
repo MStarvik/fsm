@@ -26,4 +26,4 @@ class StateMachine(object):
 
     def signal(self, signal):
         if self.state:
-            self.state.signal(signal)
+            return self.state.signal(signal)

@@ -23,6 +23,6 @@ class State(object):
 
     def signal(self, signal):
         if signal in self.signals:
-            self.signals[signal]()
+            return self.signals[signal]()
         elif self.debug > 2:
             print("debug: {} has no signal named {}".format(self.__name__, signal))
