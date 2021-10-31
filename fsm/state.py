@@ -3,9 +3,10 @@ from weakref import proxy
 
 class State(object):
     def __init__(self, state_machine):
-        self.state_machine = proxy(state_machine);
+        self.state_machine = proxy(state_machine)
 
         self.signals = dict()
+        self.running = False
 
         self.debug = 0
 
@@ -13,6 +14,9 @@ class State(object):
         pass
 
     def exit(self):
+        pass
+
+    def main(self):
         pass
 
     def transition(self, state):
