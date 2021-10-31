@@ -34,7 +34,7 @@ class StateMachine(object):
         if self.state:
             self.state.entry()
             self.state.running = True
-            self.worker = Thread(target=self.state.main)
+            self.worker = Thread(target=self.state.main).start()
 
     def signal(self, signal):
         if self.state:
